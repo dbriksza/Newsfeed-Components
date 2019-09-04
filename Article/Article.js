@@ -116,11 +116,11 @@ const data = [
 const apple = document.querySelector(".articles");
 
 function createArticle(
-  titlea,
-  datea,
-  firstParagrapha,
-  secondParagrapha,
-  thirdParagrapha
+  title,
+  date,
+  firstParagraph,
+  secondParagraph,
+  thirdParagraph
 ) {
   const panel = document.createElement("div");
   const artTitle = document.createElement("h2");
@@ -141,11 +141,19 @@ function createArticle(
   artDate.classList.add("date");
   buttonPanel.classList.add("expandButton");
 
-  artTitle.textContent = titlea;
-  artDate.textContent = datea;
-  artFirstParagraph.textContent = firstParagrapha;
-  artSecondParagraph.textContent = secondParagrapha;
-  artThirdParagraph.textContent = thirdParagrapha;
+  artTitle.textContent = title;
+  artDate.textContent = date;
+  artFirstParagraph.textContent = firstParagraph;
+  artSecondParagraph.textContent = secondParagraph;
+  artThirdParagraph.textContent = thirdParagraph;
+  buttonPanel.textContent = "\u25bc";
+
+  buttonPanel.addEventListener("click", e => {
+    console.log("button clicked", e.target);
+    panel.classList.toggle("article-open");
+  });
+
+  return panel;
 }
 
 data.forEach(datum => {
