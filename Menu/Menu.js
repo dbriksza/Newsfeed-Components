@@ -36,14 +36,21 @@ let menuItems = [
 function createMenu(array) {
   const menu = document.createElement("div");
   const unorderedList = document.createElement("ul");
-  array.forEach(menuItems => unorderedList.push(document.createElement("li")));
+  array.forEach(function(element) {
+    var btn = document.createElement("li");
+    btn.innerHTML = element;
+    unorderedList.appendChild(btn);
+  });
   const menuButton = document.querySelector(".menu-button");
   menu.classList.add("menu");
+  menuButton.appendChild(menu);
   menu.appendChild(unorderedList);
+
   menuButton.addEventListener("click", e => {
     console.log("button clicked", e.target);
-    menuButton.classList.toggle("menu--open");
+    menu.classList.toggle("menu--open");
   });
+
   return menu;
 }
 
