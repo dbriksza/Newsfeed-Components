@@ -36,22 +36,23 @@ let menuItems = [
 function createMenu(array) {
   const menu = document.createElement("div");
   const unorderedList = document.createElement("ul");
-  array.forEach(function(element) {
-    var btn = document.createElement("li");
-    btn.innerHTML = element;
-    unorderedList.appendChild(btn);
-  });
-  const menuButton = document.querySelector(".menu-button");
-  menu.classList.add("menu");
-  menuButton.appendChild(menu);
+
   menu.appendChild(unorderedList);
+  menu.classList.add("menu");
+
+  array.forEach(function(element) {
+    const li = document.createElement("li");
+    li.textContent = element;
+    unorderedList.appendChild(li);
+  });
+
+  const menuButton = document.querySelector(".menu-button");
 
   menuButton.addEventListener("click", e => {
     console.log("button clicked", e.target);
     menu.classList.toggle("menu--open");
   });
-
   return menu;
 }
-
-createMenu(menuItems);
+const header = document.querySelector(".header");
+header.appendChild(createMenu(menuItems));
